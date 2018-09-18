@@ -3,15 +3,38 @@ import gql from 'graphql-tag';
 export const CURRENT_USER = gql`
 {
     currentUser{
-        email
+        _id
+        username
+        admin
+        agence
+        conducteur
     }
 }
 `;
 
+export const USERS = gql`
+{
+    users{
+        _id
+        username
+        admin
+        agence
+        conducteur
+        created
+        updated
+    }
+}
+`;
+
+
 export const LOGIN = gql`
-mutation login($email: String!, $password: String!){
-    login(email: $email, password: $password){
-        email
+mutation login($username: String!, $password: String!){
+    login(username: $username, password: $password){
+        _id
+        username
+        admin
+        agence
+        conducteur
     }
   }
 `;
@@ -19,5 +42,41 @@ mutation login($email: String!, $password: String!){
 export const LOGOUT = gql`
 mutation{
     logout
+}
+`;
+
+export const REMOVE_USER = gql`
+mutation removeUser($_id: String!){
+    removeUser(_id: $_id){
+        _id
+    }
+}
+`;
+
+export const ADD_USER = gql`
+mutation addUser($user: UserInput!){
+    addUser(input: $user){
+        _id
+        username
+        admin
+        agence
+        conducteur
+        created
+        updated
+    }
+}
+`;
+
+export const UPDATE_USER = gql`
+mutation updateUser($_id: String!, $user: UserInput!){
+    updateUser(_id: $_id, input: $user){
+        _id
+        username
+        admin
+        agence
+        conducteur
+        created
+        updated
+    }
 }
 `;

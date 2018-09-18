@@ -1,7 +1,7 @@
 const { merge } = require('lodash');
 const { makeExecutableSchema } = require('graphql-tools');
 const { mergeTypes } = require('merge-graphql-schemas');
-const { ObjectId } = require('./scalar.js');
+const { ObjectId, Date } = require('./scalar.js');
 
 const { 
   Marker,
@@ -38,9 +38,16 @@ const {
   userResolvers
 } = require('./user/user.js');
 
+const { 
+  Admin,
+  adminResolvers
+} = require('./admin/admin.js');
+
 //SCALAR
 const Scalar = `
+  scalar Upload
   scalar ObjectId
+  scalar Date
 `;
 
 module.exports.typeDefs = mergeTypes([ 
@@ -51,7 +58,8 @@ module.exports.typeDefs = mergeTypes([
   Commercial,
   Conducteur,
   Marque,
-  User 
+  User,
+  Admin
 ], 
 { all: true }
 );
@@ -63,5 +71,6 @@ module.exports.resolvers = merge(
   commercialResolvers,
   conducteurResolvers,
   marqueResolvers,
-  userResolvers
+  userResolvers,
+  adminResolvers
 );

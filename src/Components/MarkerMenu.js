@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from '../App.less';
 import { Mutation } from 'react-apollo';
 import { MARKERS, UPDATE_MARKER, ADD_MARKER } from './query/markers.js';
+import { IoIosArrowDropleft } from 'react-icons/io';
 import MarkerFields from './Markers/fields.js';
 
 export default class MarkerMenu extends Component {
@@ -33,6 +34,9 @@ export default class MarkerMenu extends Component {
     }
 
     handleChange(e){
+
+        console.log(e);
+
         const name = e.target.name;
         const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
 
@@ -57,6 +61,11 @@ export default class MarkerMenu extends Component {
 
         return(
             <div className={show}>
+                <div className={styles.title}>
+                    <IoIosArrowDropleft onClick={this.hideMarkerMenu.bind(this)} className={styles.arrow}></IoIosArrowDropleft>
+                    <div className={styles.client}>{currentMarker ? currentMarker.client : ""}</div>
+                    <div className={styles.lieu}>{currentMarker ? currentMarker.lieu : ""}</div>
+                </div>
                 {currentMarker && currentMarker._id ? (
                 <Mutation mutation={UPDATE_MARKER}>
                     {(updateMarker, { data }) => (
@@ -85,10 +94,6 @@ export default class MarkerMenu extends Component {
                             this.hideMarkerMenu();
                           }}>
                             <MarkerFields data={this.props.data} handleChange={this.handleChange.bind(this)} currentMarker={currentMarker}></MarkerFields>
-                            <div className={styles.buttons}>
-                                <button type="submit" className={[styles.button, styles.valid].join(' ')}>Valider</button>
-                                <button onClick={this.hideMarkerMenu.bind(this)} className={[styles.button, styles.cancel].join(' ')}>Annuler</button>
-                            </div>
                         </form>
                     )}
                 </Mutation> ) : (
@@ -126,10 +131,6 @@ export default class MarkerMenu extends Component {
                             this.hideMarkerMenu();
                           }}>
                             <MarkerFields data={this.props.data} handleChange={this.handleChange.bind(this)} currentMarker={currentMarker}></MarkerFields>
-                            <div className={styles.buttons}>
-                                <button type="submit" className={[styles.button, styles.valid].join(' ')}>Valider</button>
-                                <button onClick={this.hideMarkerMenu.bind(this)} className={[styles.button, styles.cancel].join(' ')}>Annuler</button>
-                            </div>
                         </form>
                     )}
                 </Mutation>

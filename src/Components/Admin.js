@@ -5,7 +5,8 @@ import Commerciaux from './Commerciaux/Commerciaux.js';
 import Marques from './Marques/Marques';
 import Conducteurs from './Conducteurs/Conducteurs';
 import Avancements from './Avancements/Avancements';
-import Utilisateurs from './Utilisateurs.js';
+import Users from './Users/Users.js';
+import Configuration from './Admin/conf.js';
 
 export default class Admin extends Component {
 
@@ -13,7 +14,7 @@ export default class Admin extends Component {
         super(props);
 
         this.state = {
-            page: "avancements"
+            page: "configuration"
         };
     }
 
@@ -39,6 +40,7 @@ export default class Admin extends Component {
                 </div>
                 <div className={styles.hMenu}>
                     <ul>
+                        <li onClick={this.setPage.bind(this,"configuration")} className={this.state.page == "configuration" ? styles.active : ""}>Configuration</li>
                         <li onClick={this.setPage.bind(this,"agences")} className={this.state.page == "agences" ? styles.active : ""}>Agences</li>
                         <li onClick={this.setPage.bind(this,"commerciaux")} className={this.state.page == "commerciaux" ? styles.active : ""}>Commerciaux</li>
                         <li onClick={this.setPage.bind(this,"marques")} className={this.state.page == "marques" ? styles.active : ""}>Marques</li>
@@ -48,12 +50,13 @@ export default class Admin extends Component {
                     </ul>
                 </div>
                 <div className={styles.content}>
+                    {(this.state.page == "configuration" && <Configuration></Configuration>)}
                     {(this.state.page == "agences" && <Agences></Agences>)}
                     {(this.state.page == "commerciaux" && <Commerciaux></Commerciaux>)}
                     {(this.state.page == "marques" && <Marques></Marques>)}
                     {(this.state.page == "conducteurs" && <Conducteurs></Conducteurs>)}
                     {(this.state.page == "avancements" && <Avancements></Avancements>)}
-                    {(this.state.page == "utilisateurs" && <Utilisateurs></Utilisateurs>)}
+                    {(this.state.page == "utilisateurs" && <Users></Users>)}
                 </div>
             </div>
         )

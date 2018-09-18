@@ -5,12 +5,12 @@ import Login from './Login.js';
 import registerServiceWorker from './registerServiceWorker';
 
 import { ApolloClient } from 'apollo-client';
-import { createHttpLink } from 'apollo-link-http';
+import { createUploadLink } from 'apollo-upload-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloProvider } from 'react-apollo';
 
 
-const link = createHttpLink({
+const link = createUploadLink({
     uri: '/graphql',
     credentials: 'include'
 })

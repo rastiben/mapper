@@ -4,7 +4,13 @@ var Schema = mongoose.Schema,
 
 module.exports.userSchema = new Schema({
     _id: ObjectId,
-    email: String
+    username: String,
+    password: String,
+    admin: Boolean,
+    agence: String,
+    Conducteur: String,
+    created: Date,
+    updated: Date
 },{ 
     collection : 'users' 
 });

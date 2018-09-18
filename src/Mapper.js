@@ -200,12 +200,17 @@ class Mapper extends Component {
     var svgrect = '<svg baseProfile="basic" xmlns="http://www.w3.org/2000/svg" width="20" fill="'+color+'" height="20" viewBox="0 0 48 48"><path d="M24 0c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z"></path><text x="24" y="20" text-anchor="middle" alignment-baseline="central" font-size="18px" font-weight="700" fill="black">'+avancement+'</text></svg>';
     var url = encodeURI("data:image/svg+xml," + svgrect).replace('#','%23');
 
-    return new CustomIcon({iconUrl: url})
+    return new CustomIcon({
+      iconUrl: url,
+      iconSize: [20,20],
+      iconAnchor: [10,20]
+    })
   }
 
   render() {
     
-    const bounds = [[-145.96875, 0], [-0, 120.28125]];
+    //const bounds = [[-145.96875, 0], [-0, 120.28125]];
+    const bounds = [[-1000, 0], [0, 1000]];
 
     return (
 

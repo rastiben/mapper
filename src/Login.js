@@ -35,7 +35,7 @@ class Login extends Component {
                                                 onSubmit={e => {
                                                     e.preventDefault();
                                                     login({ variables: { 
-                                                            email: this.email.value,
+                                                            username: this.username.value,
                                                             password: this.password.value
                                                         }
                                                     });
@@ -44,7 +44,7 @@ class Login extends Component {
                                                         Se connecter
                                                     </span>
 
-                                                    <input ref={node => this.email = node} className={styles.input} type="text" name="email" placeholder="Identifiant" />
+                                                    <input ref={node => this.username = node} className={styles.input} type="text" name="email" placeholder="Identifiant" />
                                                     <input ref={node => this.password = node} className={styles.input} type="password" name="pass" placeholder="Mot de passe" />
                                                     
                                                     <button className={styles.button}>CONNEXION</button>

@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 var session = require('express-session');
 var cors = require('cors');
 var { makeExecutableSchema } = require('graphql-tools');
-const { ApolloServer, graphiqlExpress } = require('apollo-server-express');
+const { ApolloServer } = require('apollo-server-express');
 var { typeDefs, resolvers } = require('./src/graphql/schema.js');
 
 const mongoose = require('mongoose');
